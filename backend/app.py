@@ -1,12 +1,13 @@
 # backend/app.py
 from flask_cors import CORS
-CORS(app)
+
 from flask import Flask, jsonify
 from services.forex import fetch_exchange_rate
 from services.news import fetch_news
 
 app = Flask(__name__)
 
+CORS(app)
 @app.route('/forex/<from_currency>/<to_currency>', methods=['GET'])
 def get_forex_data(from_currency, to_currency):
     exchange_rate = fetch_exchange_rate(from_currency, to_currency)
