@@ -7,9 +7,14 @@
       }
     ],
     "routes": [
+      
       {
-        "src": "(/.*)",
-        "dest": "/app.py"
+        "src": "/forex/(.*)",
+        "dest": "/api/forex.py"
+      },
+      {
+        "src": "/news/(.*)",
+        "dest": "/api/news.py"
       }
     ]
   }

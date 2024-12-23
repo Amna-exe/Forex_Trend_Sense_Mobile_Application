@@ -24,5 +24,16 @@ def get_news_data(query):
     news = fetch_news(query)
     return jsonify(news)
 
+def handler(request):
+    # Extract from_currency and to_currency from the URL parameters
+    from_currency = request.args.get('from_currency', 'USD')
+    to_currency = request.args.get('to_currency', 'EUR')
+
+    # Fetch exchange rate data
+    exchange_rate = fetch_exchange_rate(from_currency, to_currency)
+
+    # Return the response as JSON
+    return jsonify(exchange_rate)
+
 if __name__ == '__main__':
     app.run(debug=True)
